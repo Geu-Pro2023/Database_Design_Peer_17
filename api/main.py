@@ -190,8 +190,9 @@ def delete_student(student_id: int, db: Session = Depends(get_db)):
 @app.get("/health")
 def health_check(db: Session = Depends(get_db)):
     try:
-        db.execute(text("SELECT 1"))  # Simple query to test the database connection
-        return {"status": "healthy"}
+        result = db.execute(text("SELECT COUNT(*) FROM Students")).scalar()
+        logger.info(f"Database contains {result} records")
+        return {"status": "healthy", "record_count": result}
     except Exception as e:
         logger.error(f"Database connection failed: {e}")
         raise HTTPException(status_code=503, detail="Database connection failed")
