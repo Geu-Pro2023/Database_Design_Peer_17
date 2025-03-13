@@ -122,7 +122,7 @@ initialize_tables(next(get_db()))
 # Pagination Parameters Model
 class PaginationParams(BaseModel):
     skip: conint(ge=0) = 0  # Must be >= 0
-    limit: conint(gt=0, le=1000) = 10  # Must be > 0 and <= 1000
+    limit: conint(gt=0, le=1000) = 1000  # Default limit set to 1000 (maximum allowed)
 
 # CRUD Endpoints
 
