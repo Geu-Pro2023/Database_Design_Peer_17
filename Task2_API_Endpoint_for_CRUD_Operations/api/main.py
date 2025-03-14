@@ -3,6 +3,7 @@ from pydantic import BaseModel, conint
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
+from pymongo import MongoClient
 import logging
 import os
 from dotenv import load_dotenv
@@ -16,17 +17,25 @@ logger = logging.getLogger(__name__)
 
 # Database connection details
 DATABASE_URL = os.getenv("DATABASE_URL")
+MONGO_URI = os.getenv("MONGO_URI")
+
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL environment variable is not set")
+if not MONGO_URI:
+    raise ValueError("MONGO_URI environment variable is not set")
 
-# Create the database engine
+# Create the database engine (MySQL)
 engine = create_engine(DATABASE_URL)
 
-# Create a configured "Session" class
+# Create a configured "Session" class for SQLAlchemy
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Create a base class for declarative models
 Base = declarative_base()
+
+# Connect to MongoDB
+mongo_client = MongoClient(MONGO_URI)
+mongo_db = mongo_client['student_project']
 
 # FastAPI app instance
 app = FastAPI()
@@ -124,6 +133,17 @@ class PaginationParams(BaseModel):
     skip: conint(ge=0) = 0  # Must be >= 0
     limit: conint(gt=0, le=1000) = 1000  # Default limit set to 1000 (maximum allowed)
 
+# Helper function to log actions in MongoDB
+def log_action(student_id: int, action: str, details: dict):
+    log_data = {
+        "student_id": student_id,
+        "action": action,
+        "details": details,
+        "timestamp": "2023-10-01T12:00:00Z"  # Replace with dynamic timestamp
+    }
+    mongo_db["student_logs"].insert_one(log_data)
+    logger.info(f"Logged {action} action for student ID: {student_id}")
+
 # CRUD Endpoints
 
 # Create a Student (POST)
@@ -134,6 +154,10 @@ def create_student(student: StudentCreate, db: Session = Depends(get_db)):
         db.add(db_student)
         db.commit()
         db.refresh(db_student)
+        
+        # Log the creation in MongoDB
+        log_action(db_student.student_id, "CREATE", student.dict())
+        
         logger.info(f"Created student with ID: {db_student.student_id}")
         return db_student
     except Exception as e:
@@ -165,6 +189,10 @@ def update_student(student_id: int, updated_data: StudentCreate, db: Session = D
             setattr(student, key, value)
         db.commit()
         db.refresh(student)
+        
+        # Log the update in MongoDB
+        log_action(student_id, "UPDATE", updated_data.dict())
+        
         logger.info(f"Updated student with ID: {student_id}")
         return student
     except Exception as e:
@@ -180,6 +208,10 @@ def delete_student(student_id: int, db: Session = Depends(get_db)):
     try:
         db.delete(student)
         db.commit()
+        
+        # Log the deletion in MongoDB
+        log_action(student_id, "DELETE", {})
+        
         logger.info(f"Deleted student with ID: {student_id}")
         return {"message": "Student deleted successfully"}
     except Exception as e:
