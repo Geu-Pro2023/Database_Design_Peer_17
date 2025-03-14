@@ -5,20 +5,15 @@ The **Student Performance Database** is a relational database schema designed to
 
 This project is ideal for educational institutions, researchers, or developers who need a scalable system to store and retrieve student performance metrics.
 
----
+#### Dataset: https://www.kaggle.com/code/spscientist/student-performance-in-exams/input
 
-### Dataset: https://www.kaggle.com/code/spscientist/student-performance-in-exams/input
+---
 
 ## Features
 - Tracks student performance across multiple metrics (math, reading, writing scores).
 - Logs changes to student scores using the `StudentScoreAudit` table.
 - Supports relationships between students, education levels, and test preparation statuses.
 - Designed for scalability and integration with machine learning models (future enhancements).
-
----
-
-## Features
-
 - **CRUD Operations** for student records
 - **Data Validation** (score ranges, foreign key constraints)
 - **Audit Logging** of score changes
@@ -26,6 +21,8 @@ This project is ideal for educational institutions, researchers, or developers w
 - **Pagination Support** (default 1000 records/page)
 - **Health Monitoring** endpoint
 - **Automated Prediction** pipeline
+  
+---
 
 ## Database Design 🗄️
 
