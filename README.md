@@ -26,6 +26,8 @@ This project is ideal for educational institutions, researchers, or developers w
 
 ## Database Design 🗄️
 
+### **1. MySQl Implementation**
+
 ```sql
 -- Core Tables
 CREATE TABLE EducationLevels (
@@ -55,6 +57,31 @@ CREATE TABLE StudentScoreAudit (
     change_date DATETIME NOT NULL,
     action VARCHAR(10) NOT NULL
 );
+```
+### **2. MongoDB Implementation**
+a). **Install MongoDB Locally**
+```
+Install MongoDB Locally
+# macOS (using Homebrew)
+brew install mongodb-community
+
+# Start MongoDB
+brew services start mongodb-community
+```
+b). **Use MongoDB Atlas**
+```
+Sign up for MongoDB Atlas .
+Create a cluster and get the connection string.
+```
+
+c). **Update the Database Connection**
+**Using pymongo**:
+```
+from pymongo import MongoClient
+# Connect to MongoDB
+client = MongoClient("mongodb://localhost:27017/")  # Replace with your MongoDB URI
+db = client["student_project"]
+students_collection = db["students"]
 ```
 
 ## API Documentation
