@@ -127,7 +127,11 @@ print(predict(42))  # Example: Returns "Good"
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
-## Team Members
-1. **John Akech**
-2. **Geu Aguto Garang Bior**
-3. **Kuir Juach Kuir Thuch**
+---
+
+## Team Members and Contributions
+1. **Geu Aguto Garang** - TASK 1: Create a Database in SQL and Mongo
+2. **Kuir Juach Kuir** - Task 2: Create API Endpoints for CRUD Operations
+3. **John Akech** - Task 3: Create a Script to Fetch Data for Prediction
+
+---
