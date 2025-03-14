@@ -30,51 +30,54 @@ This project is a Student Management System built using FastAPI, SQLAlchemy, and
 
 1. Clone the repository:
 
-   ```bash
+ 
    git clone https://github.com/yourusername/Database_Design_Peer_17.git
    cd Database_Design_Peer_17
+   
 Create a virtual environment (optional but recommended):
 
-bash
-Run
-Copy code
+
 python -m venv venv
+
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+
 Install the required packages:
 
-bash
-Run
-Copy code
+
 pip install -r requirements.txt
+
 Create a .env file in the root directory and add your database connection strings:
 
-plaintext
-Run
-Copy code
+
 DATABASE_URL=mysql+pymysql://username:password@localhost/db_name
+
 MONGO_URI=mongodb://localhost:27017
+
 Replace username, password, and db_name with your MySQL credentials and database name.
 
 Running the Application
+
 To run the FastAPI application, use the following command:
 
-bash
-Run
-Copy code
 uvicorn main:app --reload
+
 The application will be available at http://127.0.0.1:8000.
+
 API Endpoints
+
 Health Check
+
 GET /health
+
 Checks the health of the application and the database connection.
+
 Students
+
 Create a Student
 
 POST /students/
 Request Body:
-json
-Run
-Copy code
+
 {
   "gender": "string",
   "race_ethnicity": "string",
