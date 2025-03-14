@@ -5,25 +5,37 @@ This project is a Student Management System built using FastAPI, SQLAlchemy, and
 ## Features
 
 - Create, read, update, and delete student records.
+  
 - Store student data in a SQL database (MySQL).
+  
 - Log actions in a MongoDB database.
+  
 - Health check endpoint to monitor the status of the application.
 
 ## Technologies Used
 
 - FastAPI
+  
 - SQLAlchemy
+  
 - Pydantic
+  
 - MongoDB
+  
 - MySQL
+  
 - Python
+  
 - dotenv for environment variable management
 
 ## Prerequisites
 
 - Python 3.7 or higher
+  
 - MySQL database
+  
 - MongoDB database
+ 
 - `pip` for installing Python packages
 
 ## Installation
@@ -80,48 +92,66 @@ Request Body:
 
 {
   "gender": "string",
+  
   "race_ethnicity": "string",
+  
   "lunch": "string",
+  
   "education_level_id": 1,
+  
   "test_preparation_id": 1,
+  
   "math_score": 90,
+  
   "reading_score": 85,
+  
   "writing_score": 88
 }
 Read All Students
 
 GET /students/
 Query Parameters: skip, limit
+
 Read a Single Student by ID
 
 GET /students/{student_id}
+
 Update a Student
 
 PUT /students/{student_id}
+
 Request Body:
-json
-Run
-Copy code
+
 {
   "gender": "string",
+  
   "race_ethnicity": "string",
+  
   "lunch": "string",
+  
   "education_level_id": 1,
+  
   "test_preparation_id": 1,
+  
   "math_score": 90,
+  
   "reading_score": 85,
+
   "writing_score": 88
 }
 Delete a Student
 
 DELETE /students/{student_id}
+
 Logging
+
 All actions related to student records are logged in a MongoDB collection named student_logs.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 Acknowledgments
+
 FastAPI documentation: FastAPI
+
 SQLAlchemy documentation: SQLAlchemy
+
 MongoDB documentation: MongoDB
