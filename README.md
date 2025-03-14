@@ -123,11 +123,11 @@ def predict(student_id):
 print(predict(42))  # Example: Returns "Good"
 ```
 
-##
+## Documentation
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
 ## Team Members
-1. John Akech
-2. Geu Aguto Garang Bior
-3. Kuir Juach Kuir Thuch
+1. **John Deng Madit Akech**
+2. **Geu Aguto Garang Bior**
+3. **Kuir Juach Kuir Thuch**
