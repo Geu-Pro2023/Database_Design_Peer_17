@@ -1,9 +1,21 @@
-# Student Performance API
+# Student Performance Database
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com/)
-[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+## Overview
+The **Student Performance Database** is a relational database schema designed to manage and analyze student data. It includes tables for tracking education levels, test preparation, student scores, and audit logs for score changes. The database serves as the foundation for a FastAPI-based backend application that provides RESTful APIs for interacting with the data.
 
-A complete solution for managing student academic records with predictive analytics capabilities.
+This project is ideal for educational institutions, researchers, or developers who need a scalable system to store and retrieve student performance metrics.
+
+---
+
+### Dataset: https://www.kaggle.com/code/spscientist/student-performance-in-exams/input
+
+## Features
+- Tracks student performance across multiple metrics (math, reading, writing scores).
+- Logs changes to student scores using the `StudentScoreAudit` table.
+- Supports relationships between students, education levels, and test preparation statuses.
+- Designed for scalability and integration with machine learning models (future enhancements).
+
+---
 
 ## Features
 
@@ -114,12 +126,11 @@ def predict(student_id):
 print(predict(42))  # Example: Returns "Good"
 ```
 
-# 🔗 Live API: https://student-performance-api-p46u.onrender.com
+##
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
-# 📄 Documentation: API Docs
-
-
-# Team Members
+## Team Members
 1. John Deng Madit Akech
 2. Geu Aguto Garang Bior
 3. Kuir Juach Kuir Thuch
