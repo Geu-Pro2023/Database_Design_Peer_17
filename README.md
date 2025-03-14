@@ -53,6 +53,7 @@ CREATE TABLE StudentScoreAudit (
 Base URL: https://student-performance-api-p46u.onrender.com
 
 Endpoints
+```
 Endpoint	Method	Description	Parameters
 /students/	POST	Create new student	JSON Body
 /students/	GET	List all students	skip, limit
@@ -60,7 +61,7 @@ Endpoint	Method	Description	Parameters
 /students/{id}	PUT	Update student	JSON Body
 /students/{id}	DELETE	Delete student	Path Param
 /health	GET	System health check	-
-
+```
 ## Setup Instructions 🛠️
 1. **Clone Repository**
    
