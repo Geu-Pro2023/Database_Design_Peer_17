@@ -5,7 +5,8 @@ This project sets up a **MySQL relational database** and integrates **MongoDB** 
 ## ER Diagram
 The **Entity-Relationship (ER) Diagram** illustrates the structure and relationships of the database.
 
-![ER Diagram](path_to_er_diagram.png) *(Replace with actual path to the ER diagram image)*
+![ER Diagram](![Uploading image.png…]()
+) *(Replace with actual path to the ER diagram image)*
 
 ---
 ## 1️⃣ MySQL Database Setup
