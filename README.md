@@ -128,6 +128,6 @@ print(predict(42))  # Example: Returns "Good"
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
 ## Team Members
-1. John Deng Madit Akech
+1. John Akech
 2. Geu Aguto Garang Bior
 3. Kuir Juach Kuir Thuch
