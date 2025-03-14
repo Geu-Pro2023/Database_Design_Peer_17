@@ -202,7 +202,8 @@ print("Inserted sample log into MongoDB.")
 ```
 
 ## 📌 Final Queries for Verification
-
+```
 SHOW DATABASES;
 SELECT COUNT(*) AS TotalStudents FROM Students;
 SELECT COUNT(*) FROM students;
+```
