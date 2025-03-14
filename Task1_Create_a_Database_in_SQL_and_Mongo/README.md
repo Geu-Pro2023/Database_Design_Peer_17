@@ -1,6 +1,6 @@
 # Student Project Database
 
-This project sets up a **MySQL relational database** and integrates **MongoDB** for logging student-related activities. It includes tables for storing student performance data and ensures **data integrity** with constraints, triggers, and stored procedures.
+This project sets up a MySQL relational database and integrates MongoDB for logging student-related activities. It includes tables for storing student performance data and ensures data integrity with constraints, triggers, and stored procedures.
 
 ## ER Diagram
 The **Entity-Relationship (ER) Diagram** illustrates the structure and relationships of the database.
@@ -202,8 +202,10 @@ print("Inserted sample log into MongoDB.")
 ```
 
 ## 📌 Final Queries for Verification
-```
+```sql
 SHOW DATABASES;
 SELECT COUNT(*) AS TotalStudents FROM Students;
 SELECT COUNT(*) FROM students;
 ```
+
+## **The End! thank you**
