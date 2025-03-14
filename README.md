@@ -46,3 +46,6 @@ CREATE TABLE StudentScoreAudit (
     change_date DATETIME NOT NULL,
     action VARCHAR(10) NOT NULL
 );
+
+
+## API Documentation 📚
