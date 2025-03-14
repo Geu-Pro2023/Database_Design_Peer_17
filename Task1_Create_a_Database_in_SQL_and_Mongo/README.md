@@ -5,36 +5,35 @@ This project sets up a **MySQL relational database** and integrates **MongoDB** 
 ## ER Diagram
 The **Entity-Relationship (ER) Diagram** illustrates the structure and relationships of the database.
 
-![ER Diagram](![Uploading image.png…]()
-) *(Replace with actual path to the ER diagram image)*
+<img width="1083" alt="image" src="https://github.com/user-attachments/assets/614b0166-a4fb-448a-90d5-cc8df4532710" />
 
----
+
 ## 1️⃣ MySQL Database Setup
 ### Step 1: Create Database
-```sql
+
 CREATE DATABASE IF NOT EXISTS student_project;
 USE student_project;
-```
+
 
 ### Step 2: Create Tables
 #### EducationLevels Table
-```sql
+
 CREATE TABLE IF NOT EXISTS EducationLevels (
     education_level_id INT AUTO_INCREMENT PRIMARY KEY,
     level_name VARCHAR(100) NOT NULL UNIQUE
 );
-```
+
 
 #### TestPreparation Table
-```sql
+
 CREATE TABLE IF NOT EXISTS TestPreparation (
     test_preparation_id INT AUTO_INCREMENT PRIMARY KEY,
     preparation_status VARCHAR(20) NOT NULL UNIQUE
 );
-```
+
 
 #### Students Table
-```sql
+
 CREATE TABLE IF NOT EXISTS Students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
     gender VARCHAR(10) NOT NULL,
@@ -48,7 +47,7 @@ CREATE TABLE IF NOT EXISTS Students (
     FOREIGN KEY (education_level_id) REFERENCES EducationLevels(education_level_id) ON DELETE CASCADE,
     FOREIGN KEY (test_preparation_id) REFERENCES TestPreparation(test_preparation_id) ON DELETE CASCADE
 );
-```
+
 
 ### Step 3: Student Score Audit Log
 ```sql
@@ -64,11 +63,11 @@ CREATE TABLE IF NOT EXISTS StudentScoreAudit (
     change_date DATETIME NOT NULL,
     action VARCHAR(10) NOT NULL
 );
-```
+
 
 ### Step 4: Stored Procedures & Triggers
 #### Insert Student Procedure
-```sql
+
 DELIMITER //
 CREATE PROCEDURE InsertStudent(
     IN p_gender VARCHAR(10),
@@ -91,10 +90,10 @@ BEGIN
     );
 END //
 DELIMITER ;
-```
+
 
 #### Trigger: Log Score Changes
-```sql
+
 DELIMITER //
 CREATE TRIGGER AfterUpdateStudentScores
 AFTER UPDATE ON Students
@@ -116,10 +115,10 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
-```
+
 
 ### Step 5: Import Student Data from Staging Table
-```sql
+
 DELIMITER //
 CREATE PROCEDURE ImportStudentData()
 BEGIN
@@ -149,18 +148,18 @@ BEGIN
     COMMIT;
 END //
 DELIMITER ;
-```
 
----
+
+
 ## 2️⃣ MongoDB Integration
 ### Setup MongoDB with Python
 #### Install Dependencies
-```bash
+
 pip install pymongo python-dotenv
-```
+
 
 #### Connect to MongoDB
-```python
+
 from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
@@ -180,10 +179,10 @@ for collection in collections:
     if collection not in mongo_db.list_collection_names():
         mongo_db.create_collection(collection)
         print(f"Created collection: {collection}")
-```
+
 
 #### Insert Sample Log
-```python
+
 log_data = {
     "student_id": 1,
     "action": "CREATE",
@@ -201,14 +200,11 @@ log_data = {
 }
 mongo_db["student_logs"].insert_one(log_data)
 print("Inserted sample log into MongoDB.")
-```
 
----
+
+
 ## 📌 Final Queries for Verification
-```sql
+
 SHOW DATABASES;
 SELECT COUNT(*) AS TotalStudents FROM Students;
 SELECT COUNT(*) FROM students;
-```
-
-
