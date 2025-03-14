@@ -10,14 +10,14 @@ The **Entity-Relationship (ER) Diagram** illustrates the structure and relations
 
 ## 1️⃣ MySQL Database Setup
 ### Step 1: Create Database
-```
+```sql
 CREATE DATABASE IF NOT EXISTS student_project;
 USE student_project;
 ```
 
 ### Step 2: Create Tables
 #### EducationLevels Table
-```
+```sql
 CREATE TABLE IF NOT EXISTS EducationLevels (
     education_level_id INT AUTO_INCREMENT PRIMARY KEY,
     level_name VARCHAR(100) NOT NULL UNIQUE
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS EducationLevels (
 ```
 
 #### TestPreparation Table
-```
+```sql
 CREATE TABLE IF NOT EXISTS TestPreparation (
     test_preparation_id INT AUTO_INCREMENT PRIMARY KEY,
     preparation_status VARCHAR(20) NOT NULL UNIQUE
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS TestPreparation (
 ```
 
 #### Students Table
-```
+```sql
 CREATE TABLE IF NOT EXISTS Students (
     student_id INT AUTO_INCREMENT PRIMARY KEY,
     gender VARCHAR(10) NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS StudentScoreAudit (
 
 ### Step 4: Stored Procedures & Triggers
 #### Insert Student Procedure
-```
+```sql
 DELIMITER //
 CREATE PROCEDURE InsertStudent(
     IN p_gender VARCHAR(10),
@@ -93,7 +93,7 @@ DELIMITER ;
 ```
 
 #### Trigger: Log Score Changes
-```
+```sql
 DELIMITER //
 CREATE TRIGGER AfterUpdateStudentScores
 AFTER UPDATE ON Students
@@ -118,7 +118,7 @@ DELIMITER ;
 ```
 
 ### Step 5: Import Student Data from Staging Table
-```
+```sql
 DELIMITER //
 CREATE PROCEDURE ImportStudentData()
 BEGIN
