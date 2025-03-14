@@ -94,6 +94,43 @@ echo "DATABASE_URL=mysql+pymysql://user:password@localhost/student_project" > .e
 uvicorn main:app --reload
 ```
 
+## Make Predictions
+Use the following Python script to load the trained model and scaler, preprocess the input data, and make predictions:
+```
+import pandas as pd
+import joblib
+
+# Load the trained model and scaler
+model = joblib.load("best_student_performance_model.pkl")
+scaler = joblib.load("scaler.pkl")
+
+# Define input data
+input_data = {
+    "gender": "male",
+    "race/ethnicity": "group C",
+    "parental level of education": "bachelor's degree",
+    "lunch": "standard",
+    "test preparation course": "none"
+}
+
+# Convert input data to DataFrame
+df_input = pd.DataFrame([input_data])
+
+# Perform One-Hot Encoding
+df_input = pd.get_dummies(df_input, columns=["gender", "race/ethnicity", "parental level of education", "lunch", "test preparation course"], drop_first=True)
+
+# Scale the input data
+input_scaled = scaler.transform(df_input)
+
+# Make prediction
+predicted_score = model.predict(input_scaled)
+print(f"Predicted Average Score: {predicted_score[0]:.2f}")
+```
+**Example Output**
+```
+Predicted Average Score: 72.50
+```
+
 ## Usage Examples
 **Create Student**
 ```
