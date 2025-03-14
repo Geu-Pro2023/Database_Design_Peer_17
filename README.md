@@ -46,6 +46,34 @@ CREATE TABLE StudentScoreAudit (
     change_date DATETIME NOT NULL,
     action VARCHAR(10) NOT NULL
 );
-
+```
 
 ## API Documentation 📚
+
+Base URL: https://student-performance-api-p46u.onrender.com
+
+Endpoints
+Endpoint	Method	Description	Parameters
+/students/	POST	Create new student	JSON Body
+/students/	GET	List all students	skip, limit
+/students/{id}	GET	Get student by ID	Path Param
+/students/{id}	PUT	Update student	JSON Body
+/students/{id}	DELETE	Delete student	Path Param
+/health	GET	System health check	-
+
+## Setup Instructions 🛠️
+1. **Clone Repository**
+   
+```
+   git clone https://github.com/your-repo/student-performance-api.git
+cd student-performance-api
+
+```
+
+2. **Install Dependencies**
+
+```
+pip install -r requirements.txt
+
+```
+
