@@ -1,11 +1,11 @@
-# Student Performance API 🎓
+# Student Performance API
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
 A complete solution for managing student academic records with predictive analytics capabilities.
 
-## Features ✨
+## Features
 
 - **CRUD Operations** for student records
 - **Data Validation** (score ranges, foreign key constraints)
@@ -48,7 +48,7 @@ CREATE TABLE StudentScoreAudit (
 );
 ```
 
-## API Documentation 📚
+## API Documentation
 
 Base URL: https://student-performance-api-p46u.onrender.com
 
@@ -62,19 +62,64 @@ Endpoint	Method	Description	Parameters
 /students/{id}	DELETE	Delete student	Path Param
 /health	GET	System health check	-
 ```
-## Setup Instructions 🛠️
-1. **Clone Repository**
-   
+## Setup Instructions 
+1. **Clone Repository** 
 ```
-   git clone https://github.com/your-repo/student-performance-api.git
+git clone https://github.com/your-repo/student-performance-api.git
 cd student-performance-api
-
 ```
-
 2. **Install Dependencies**
-
 ```
 pip install -r requirements.txt
-
+```
+3. **Database Setup**
+```
+mysql -u root -p < database.sql
+```
+4. **Configure Environment**
+```
+echo "DATABASE_URL=mysql+pymysql://user:password@localhost/student_project" > .env
+```
+5. **Run FastAPI Server**
+```
+uvicorn main:app --reload
 ```
 
+## Usage Examples
+**Create Student**
+```
+curl -X POST "https://student-performance-api-p46u.onrender.com/students/" \
+-H "Content-Type: application/json" \
+-d '{
+  "gender": "female",
+  "race_ethnicity": "group B",
+  "lunch": "standard",
+  "education_level_id": 1,
+  "test_preparation_id": 2,
+  "math_score": 85,
+  "reading_score": 92,
+  "writing_score": 89
+}'
+```
+**Predict Performance**
+```
+import requests
+
+def predict(student_id):
+    response = requests.get(f"https://student-performance-api-p46u.onrender.com/students/{student_id}")
+    scores = response.json()
+    avg = (scores['math_score'] + scores['reading_score'] + scores['writing_score']) / 3
+    return "Excellent" if avg >= 90 else "Good" if avg >= 75 else "Average" if avg >= 60 else "Needs Improvement"
+
+print(predict(42))  # Example: Returns "Good"
+```
+
+# 🔗 Live API: https://student-performance-api-p46u.onrender.com
+
+# 📄 Documentation: API Docs
+
+
+# Team Members
+1. John Deng Madit Akech
+2. Geu Aguto Garang Bior
+3. Kuir Juach Kuir Thuch
